@@ -1,0 +1,32 @@
+.App-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card-grid {
+  column-count: var(--result-columns);
+  column-gap: 0.5em;
+  margin-top: 12px;
+  min-height: 100vh;
+}
+
+.App-category {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+@media screen and (min-width: 55rem) {
+  .App-main {
+    flex-direction: initial;
+  }
+
+  .App-category {
+    position: sticky;
+    top: 3rem;
+    width: 40%;
+    max-width: 300px;
+    margin-top: -20px;
+    margin-left: 30px;
+  }
+}
