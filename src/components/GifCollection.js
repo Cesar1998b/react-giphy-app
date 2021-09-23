@@ -1,7 +1,7 @@
 import React from "react";
-import GifCollectionItem from "./GifCollectionItem";
-import "../App.css";
+import ListOfGifs from "./ListOfGifs";
 import { useFetchGifs } from "hooks/useFetchGifs";
+import "../App.css";
 
 function GifCollection({ params }) {
 
@@ -11,10 +11,10 @@ function GifCollection({ params }) {
   return (
     <> 
     <h3 className="title animate__animated animate__fadeIn">{keyword}</h3>
-    {loading && <p className="animate__animated animate__flash">Loading</p>}    
+    {loading && <p className="animate__animatedListOfGifsanimate__flash">Loading</p>}    
     <div className="card-grid">
         {gifs.map((img) => (
-          <GifCollectionItem key={img.id} {...img}/>
+          <ListOfGifs key={img.id} {...img}/>
         ))}
     </div> 
     </>

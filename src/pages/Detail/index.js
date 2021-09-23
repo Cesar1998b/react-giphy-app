@@ -1,6 +1,6 @@
 import React from 'react'
 import useGlobalGifs from 'hooks/useGlobalGifs'
-import GifCollectionItem from 'components/GifCollectionItem'
+import GifCollectionItem from 'components/ListOfGifs'
 import "./Detail.css"
 
 export default function Detail({ params }) {

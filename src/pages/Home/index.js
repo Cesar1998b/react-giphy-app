@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SearchResults from '../SearchResults/index';
-import GifCollectionItem from 'components/GifCollectionItem';
+import GifCollectionItem from 'components/ListOfGifs';
 import TrendingSearches from 'components/TrendingSearches';
 import { useFetchGifs } from 'hooks/useFetchGifs';
 import "./Home.css";
