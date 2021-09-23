@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'wouter'
-import "../App.css";
+import "./ListOfGifs.css";
 
 function GifCollectionItem({ id, title, url }) {
   return (
