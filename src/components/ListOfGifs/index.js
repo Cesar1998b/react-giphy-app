@@ -1,16 +1,18 @@
 import React from "react";
-import { Link } from 'wouter'
+import Gif from "../Gif";
 import "./ListOfGifs.css";
 
-function GifCollectionItem({ id, title, url }) {
-  return (
-    <div className="card animate__animated animate__fadeIn">
-      <Link to={`/gif/${id}`} className='Gif-link'>
-      <img src={url} alt={title} />
-      <h4>{title}</h4>
-      </Link>
-    </div>
-  );
+export default function ListOfGifs({ gifs }) {
+  return <div className='ListOfGifs'>
+    {
+      gifs.map(({id, title, url}) =>
+        <Gif
+          id={id}
+          key={id}
+          title={title}
+          url={url}
+        />
+      )
+    }
+  </div>
 }
-
-export default GifCollectionItem;
