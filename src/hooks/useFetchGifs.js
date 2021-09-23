@@ -1,22 +1,23 @@
 import { useState, useEffect,useContext} from "react";
-import { getGifs } from "../services/getGifs";
+import  getGifs  from "../services/getGifs";
 import GifContexts from '../context/GifContexts'
 
-export const useFetchGifs = (keyword = null) => {
+export function useFetchGifs({keyword} = {keyword : null}) {
   const [loading, setLoading] = useState(false)
   const {gifs, setGifs} = useContext(GifContexts)
 
+  const keywordToUse = keyword || localStorage.getItem('lastKeyword') || 'gatitos'
+
   useEffect(() => {
     setLoading(true)
-    const keywordToUse = keyword || localStorage.getItem('lastKeyword') || 'gatitos'
-    
-    //eslint-disable-next-line 
-    getGifs(keyword = keywordToUse).then(gifs => {
+
+    getGifs({keyword : keywordToUse})
+    .then(gifs => {
         setGifs(gifs)
         setLoading(false)
       localStorage.setItem('lastKeyword', keyword)
     });
-  }, [keyword, setGifs]);
+  }, [keyword, keywordToUse, setGifs]);
 
   return {loading,gifs};
 };
