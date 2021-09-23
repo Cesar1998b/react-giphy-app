@@ -5,8 +5,6 @@
 }
 
 .card-grid {
-  column-count: var(--result-columns);
-  column-gap: 0.5em;
   margin-top: 12px;
   min-height: 100vh;
 }
