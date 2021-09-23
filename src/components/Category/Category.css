@@ -3,7 +3,6 @@
   font-weight: bold;
   margin-bottom: 0.7rem;
   margin-top: 0.6rem;
-  text-align: center;
 }
 
 .CategoryList {
@@ -36,17 +35,9 @@
 
 @media screen and (min-width: 55rem) {
   .CategoryTitle {
-    text-align: left;
+    text-align: right;
   }
   .CategoryList {
-    align-items: center;
-  }
-  .CategoryListItem {
-    margin: 0.1rem;
-    padding: 0.1rem;
-    font-size: 1.1rem;
-  }
-  .CategoryItem {
-    font-size: 1em;
+    justify-content: flex-end;
   }
 }
