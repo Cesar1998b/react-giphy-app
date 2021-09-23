@@ -12,10 +12,8 @@ export const useFetchGifs = (keyword = null) => {
     
     //eslint-disable-next-line 
     getGifs(keyword = keywordToUse).then(gifs => {
-      setTimeout(() => {
         setGifs(gifs)
         setLoading(false)
-      }, 900);
       localStorage.setItem('lastKeyword', keyword)
     });
   }, [keyword, setGifs]);
