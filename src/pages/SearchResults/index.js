@@ -1,46 +1,32 @@
-import React, { useState } from "react";
-import PropTypes from 'prop-types';
-import { useLocation } from 'wouter'
-import "./SearchResults.css"
+import React from "react";
+import ListOfGifs from "components/ListOfGifs";
+import SearchForm from "components/SearchForm";
+import { useFetchGifs } from "hooks/useFetchGifs";
 
+export default function SearchResults({ params }) {
+  const { keyword } = params;
+  const { loading, gifs } = useFetchGifs({ keyword });
 
-function SearchResults({keyword,setKeyword}) {
-  const [inputValue, setInputValue] = useState('');
-  //eslint-disable-next-line 
-  const [path, pushLocation] = useLocation(); 
-
-  const changeInputValue = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const addCategoryToList = (e) => {
-    e.preventDefault();
-    if(inputValue.trim().length > 2){        
-        keyword = inputValue;
-        pushLocation(`/search/${keyword}`);
-        setKeyword(inputValue); 
-        setInputValue("");
-    }else{
-        alert('text must be 3 characters or more');
-    }
-  };
-
+  const title = gifs ? `${gifs.length} resultados de ${keyword}` : "";
   return (
-    <form onSubmit={addCategoryToList} className="c-search">
-      <button className="c-button">Search</button>
-      <input
-        className="c-search-input"
-        type="text"
-        placeholder="Search a gif.."
-        value={inputValue}
-        onChange={changeInputValue}
-      />
-    </form>
+    <>
+      {loading ? (
+        <p className="animate__animatedListOfGifsanimate__flash">Loading</p>
+      ) : (
+        <>
+          <div>
+            <title>{title}</title>
+            <meta name="description" content={title} />
+          </div>
+          <header className="o-header">
+            <SearchForm initialKeyword={keyword} />
+          </header>
+          <div className="App-wrapper">
+            <h3 className="App-title">{decodeURI(keyword)}</h3>
+            <ListOfGifs gifs={gifs} />
+          </div>
+        </>
+      )}
+    </>
   );
 }
-
-SearchResults.propTypes = {
-    setKeyword: PropTypes.func.isRequired
-}
-
-export default React.memo(SearchResults);
