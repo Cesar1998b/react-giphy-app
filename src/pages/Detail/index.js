@@ -1,7 +1,6 @@
 import React from 'react'
 import useGlobalGifs from 'hooks/useGlobalGifs'
-import GifCollectionItem from 'components/ListOfGifs'
-import "./Detail.css"
+import Gif from 'components/Gif'
 
 export default function Detail({ params }) {
     const gifs = useGlobalGifs()
@@ -9,6 +8,6 @@ export default function Detail({ params }) {
     return (
     <div className="title">
         <h2>Detalle del Gif</h2>
-        <GifCollectionItem {...gif}/>
+        <Gif {...gif}/>
     </div>)
 }
