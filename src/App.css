@@ -1,10 +1,3 @@
-:root {
-  --result-columns: 2;
-  --gridList-column: 250px;
-  --gridList-rows: 250px;
-  --gridList-gap: 6px;
-}
-
 .App-content {
   color: white;
   display: flex;
@@ -27,54 +20,49 @@
   width: 80%;
 }
 
-.btn-add {
-  height: 30px;
-  background-color: #282c34;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 16px;
-  cursor: pointer;
+.App-title {
+  text-transform: capitalize;
+  color: var(--theme-body-txt);
+  margin-top: 0.6rem;
 }
 
-.btn-add:hover {
-  background-color: #191b1f;
+.App-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.text-add {
-  width: 100%;
-  height: 25px;
-  margin-bottom: 12px;
-  border: 1px solid #282c34;
-  border-radius: 10px;
-  outline: none;
-  font-size: 1rem;
-  color: #282c34;
+.App-wrapper {
+	width: 100%;
+	max-width: 90rem;
+	margin: 0 auto;
+	padding: 0 0.5em;
 }
 
-.text-add::placeholder {
-  top: 0px;
-  left: 0px;
-  color: #282c34;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.Gif-link {
-  color: #000;
-  display: block;
-  text-decoration: none;
-  position: relative;
+.App-results {
+  flex-shrink: 2;
   width: 100%;
 }
 
-@media screen and (min-width: 37.5rem) {
-  :root {
-    --result-columns: 3;
+.App-category {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.title {
+  text-transform: capitalize;
+}
+
+@media screen and (min-width: 55rem){
+  .App-main{
+    flex-direction: initial;
+  }
+
+  .App-category{
+    position: sticky;
+    top: var(--search-size-mx-h);
+    width: 40%;
+    max-width: 300px;
   }
 }
 
-@media screen and (min-width: 60rem) {
-  :root {
-    --result-columns: 4;
-  }
-}
