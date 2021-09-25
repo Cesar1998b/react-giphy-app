@@ -1,19 +1,24 @@
 import { useEffect, useState, useRef } from 'react';
 
 
-export default function useNearScreen({ distance = '100px' } = {}) {
+export default function useNearScreen({ distance = '100px', externalRef, once = true } = {}) {
     const [isNearScreen, setShow] = useState(false);
     const fromRef = useRef();
   
-    useEffect(function () {
-      let observer;
+    useEffect(() => {
+      let observer
+
+      const el = externalRef ? externalRef.current : fromRef.current
+
       const onChange = (entries, observer) => {
         const element = entries[0];
         if (element.isIntersecting) {
           setShow(true);
-          observer.disconnect();
+          once && observer.disconnect();
+        }else{
+          !once && setShow(false)
         }
-      };
+      }
   
       Promise.resolve(
         typeof IntersectionObserver !== "undefined"
@@ -24,11 +29,11 @@ export default function useNearScreen({ distance = '100px' } = {}) {
           rootMargin: distance
         });
   
-        observer.observe(fromRef.current);
-      });
+        if(el) observer.observe(el)
+      })
   
       return () => observer && observer.disconnect();
-    });
+    })
   
-    return { isNearScreen, fromRef };
+    return { isNearScreen, fromRef }
   }
