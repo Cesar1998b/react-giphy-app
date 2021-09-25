@@ -27,3 +27,10 @@
   .c-search-input:focus{
     outline: none;
   }
+
+  @media screen and (min-width: 55rem) {
+    .c-search-input,
+    .c-button{
+      font-size: 16px;
+    }
+  }
